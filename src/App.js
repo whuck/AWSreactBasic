@@ -34,7 +34,7 @@ class App extends Component {
     
     return total;
   }
-  onrender() { 
+  render() { 
     const { countries, totalMedals } = this.state;
     return ( 
       <div className="App">
