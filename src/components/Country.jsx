@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Button} from '@material-ui/core';
 import {AddCircle} from '@material-ui/icons';
 import {RemoveCircle} from '@material-ui/icons';
-import Medal from './Medal';
+import Medal from './MedalFunctional';
 
 class Country extends Component {
 
