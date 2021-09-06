@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+// Author:      will huck
+// Version:     0.3.5
+import React, { Component } from 'react';
+import Country from './components/Country';
+
+// App.css should be imported after all child components
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends Component {
+  state = { 
+    countries: [
+      {id:0,name:'usa',gold:1},
+      {id:1,name:'china',gold:0}
+    ]
+  }
 
+
+  render() { 
+    const {countries} = this.state;
+    return ( 
+      <div className="App">
+        <header className="App-header">
+          huck's awesome medal app
+        </header>
+        { countries.map(country => 
+          <Country 
+            key={ country.id } 
+            country = { country }
+          />) }
+      </div>
+     );
+  }
+}
+ 
 export default App;
