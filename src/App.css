@@ -17,8 +17,10 @@ html {font-family: Roboto;}
 .App-link {
   color: #61dafb;
 }
+.medalBox {border-top:2px solid navy;}
+.countries {float:left;}
 .country {
-  width:calc(100%-100px);
+  width:min-content;
   border: 2px solid navy;
   border-radius: 5px;
   margin:10px 50px;
@@ -29,9 +31,18 @@ html {font-family: Roboto;}
   margin:10px;
 }
 .medals {
-  display:inline;
+  display:flex;
+  align-items: center;
   margin:10px;
 }
+.medal {
+  display:flex;
+}
+
 .incrementMedalBtn {
   margin:10px;
+}
+.totals {
+  float:right;
+  margin-right:100px;
 }
