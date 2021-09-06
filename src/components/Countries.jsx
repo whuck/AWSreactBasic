@@ -6,7 +6,7 @@ class Countries extends Component {
           {id:0,name:'usa',gold:1},
           {id:1,name:'china',gold:0}
         ]
-    }
+    } 
     render() {
         return (
             <div className="countries">
