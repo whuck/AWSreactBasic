@@ -2,7 +2,8 @@
 // Version:     0.3.5
 import React, { Component } from 'react';
 import Country from './components/Country';
-import { getCountries } from './services/countryService';
+import NewCountry from './components/NewCountry';
+import { getCountries,addCountry,deleteCountry } from './services/countryService';
 
 // App.css should be imported after all child components
 import './App.css';
@@ -27,12 +28,28 @@ class App extends Component {
   updateGrandTotal(cList) {
     return cList.reduce((a,b)=>a+b.gold+b.silver+b.bronze,0);
   }
+  showNewCountryDiag() {
+    let c = new Country();
+    let n = prompt("Enter Country Name:");
 
+    if (n && n !== "") {
+        c.name = n;
+        this.setState({countries:addCountry(c)});
+        
+    } else return null;
+  }
   sumCountryMedals = (c) => {
-    let country = this.state.countries[c];
-    let total = country.bronze + country.silver + country.gold;
     
-    return total;
+    let country = this.state.countries[c];
+    if(country) {
+      let total = country.bronze + country.silver + country.gold;
+      return total;
+    }
+    return 0;
+  }
+  handleDelete(i) {
+    //deleteCountry(i);
+    this.setState({countries:deleteCountry(i)});
   }
   render() { 
     const { countries, totalMedals } = this.state;
@@ -47,6 +64,7 @@ class App extends Component {
                         key={ country.id } 
                         country = { country }
                         onInc = { this.handleIncrement }
+                        onDelete = { this.handleDelete.bind(this) }
                         cid={ country.id }
                     />)
                 }
@@ -62,7 +80,7 @@ class App extends Component {
 
           }
         </div>
-
+          <NewCountry showDiag = { this.showNewCountryDiag.bind(this) }></NewCountry>
       </div>
      );
   }
